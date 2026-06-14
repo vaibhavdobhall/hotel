@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            'EmailJS is not configured. Please set EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, and EMAILJS_PUBLIC_KEY.',
+            'Booking service is not configured. Please contact support or try again later.',
         },
         { status: 500 }
       );
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error('Booking API error:', error);
     return NextResponse.json(
-      { error: 'Failed to send booking request. Please try again later.' },
+      { error: 'Unable to process booking. Please ensure EmailJS is configured correctly or try again later.' },
       { status: 500 }
     );
   }
