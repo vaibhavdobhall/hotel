@@ -32,7 +32,7 @@ export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db
     minPoolSize: 1,
   };
 
-  const client = new MongoClient(MONGODB_URI, opts);
+  const client = new MongoClient(MONGODB_URI!, opts);
   await client.connect();
 
   const db = client.db('hotel');
