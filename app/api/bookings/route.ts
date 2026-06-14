@@ -31,8 +31,11 @@ export async function POST(req: NextRequest) {
     const templateId = process.env.EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.EMAILJS_PUBLIC_KEY;
 
-    if (!serviceId || !templateId || !publicKey) {
-      console.error('EmailJS configuration is missing.', {
+    const isPlaceholder = (value: string | undefined) =>
+      !value || value.startsWith('your_') || value.includes('your_emailjs');
+
+    if (isPlaceholder(serviceId) || isPlaceholder(templateId) || isPlaceholder(publicKey)) {
+      console.error('EmailJS credentials are invalid or still placeholder values.', {
         serviceId: Boolean(serviceId),
         templateId: Boolean(templateId),
         publicKey: Boolean(publicKey),
@@ -41,7 +44,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            'EmailJS credentials are not configured. Please add EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, and EMAILJS_PUBLIC_KEY.',
+            'EmailJS credentials are not configured or are still placeholder values. Please update EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, and EMAILJS_PUBLIC_KEY.',
         },
         { status: 500 }
       );
@@ -75,11 +78,19 @@ export async function POST(req: NextRequest) {
     }
 
     if (!emailResponse.ok) {
-      console.error('EmailJS API error:', emailResult);
+      console.error('EmailJS API error:', {
+        status: emailResponse.status,
+        statusText: emailResponse.statusText,
+        response: emailResult,
+      });
       return NextResponse.json(
         {
           error: 'Failed to send booking request.',
-          details: emailResult,
+          details: {
+            status: emailResponse.status,
+            statusText: emailResponse.statusText,
+            response: emailResult,
+          },
         },
         { status: emailResponse.status || 502 }
       );

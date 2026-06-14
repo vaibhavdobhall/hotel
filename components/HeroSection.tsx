@@ -72,10 +72,15 @@ export default function HeroSection() {
           data.details?.error ||
           (typeof data.details === 'string' ? data.details : null);
 
+        const fallbackDetails =
+          !detailMessage && data.details
+            ? JSON.stringify(data.details, null, 2)
+            : detailMessage;
+
         setSubmitStatus({
           type: 'error',
           message:
-            data.error || detailMessage || 'Failed to send booking request. Please try again.',
+            data.error || fallbackDetails || 'Failed to send booking request. Please try again.',
         });
       }
     } catch (error) {
