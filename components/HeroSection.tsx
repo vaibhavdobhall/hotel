@@ -56,9 +56,8 @@ export default function HeroSection() {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: 'Booking Successful! Your reservation has been confirmed. Check your email for details.',
+          message: 'Booking Request Received via Email! Our team will follow up shortly.',
         });
-        alert('Booking Successful! Your reservation has been confirmed. Check your email for details.');
         setFormData({
           guestName: '',
           guestEmail: '',
@@ -70,9 +69,8 @@ export default function HeroSection() {
       } else {
         setSubmitStatus({
           type: 'error',
-          message: data.error || 'Failed to create booking. Please try again.',
+          message: data.error || 'Failed to send booking request. Please try again.',
         });
-        alert(data.error || 'Failed to create booking. Please try again.');
       }
     } catch (error) {
       console.error('Booking error:', error);
@@ -80,7 +78,6 @@ export default function HeroSection() {
         type: 'error',
         message: 'An error occurred while processing your booking. Please try again.',
       });
-      alert('An error occurred while processing your booking. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -115,6 +112,18 @@ export default function HeroSection() {
               <h2 className="text-lg sm:text-2xl font-semibold text-white mt-1">Reserve your stay</h2>
             </div>
           </div>
+
+          {submitStatus.type && (
+            <div
+              className={`rounded-2xl border p-4 text-sm ${
+                submitStatus.type === 'success'
+                  ? 'border-emerald-500/40 bg-emerald-950/70 text-emerald-200'
+                  : 'border-red-500/40 bg-red-950/70 text-red-200'
+              }`}
+            >
+              {submitStatus.message}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <label className="space-y-2 text-xs sm:text-sm text-white/80">

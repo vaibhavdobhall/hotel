@@ -1,41 +1,21 @@
 # Hotel Premium Booking
 
-A premium hotel booking and management website built with Next.js, Tailwind CSS, Express, and MongoDB.
+A premium hotel booking website built with Next.js, Tailwind CSS, and EmailJS for booking emails.
 
 ## Project overview
 
 - Frontend: `Next.js` + `Tailwind CSS`
-- Backend: `Express` + `MongoDB` via `Mongoose`
-- Designed for a luxurious, modern hotel experience with responsive booking and marketing pages
-- Includes room management, booking engine, inquiries, and admin routes
+- Booking notifications: `EmailJS`
+- Designed for a luxurious, modern hotel experience with responsive booking pages
 
 ## Installed structure
 
 - `app/` - Next.js app pages and global styling
 - `components/` - Reusable premium UI sections
-- `server/` - Express backend, models, and API routes
 
-## Key backend routes
+## Booking route
 
-- `GET /api/rooms`
-- `POST /api/rooms`
-- `GET /api/bookings`
-- `POST /api/bookings`
-- `GET /api/inquiries`
-- `POST /api/inquiries`
-- `POST /api/auth/signup`
-- `POST /api/auth/login`
-- `POST /api/payments/create-session`
-- `GET /api/admin/bookings`
-- `GET /api/admin/rooms`
-- `GET /api/admin/inquiries`
-
-## Database models
-
-- `User` - customers and admins
-- `Room` - room details, price, capacity, amenities, images
-- `Booking` - reservation details, room references, status
-- `Inquiry` - contact and event inquiries
+- `POST /api/bookings` (booking requests are sent via EmailJS)
 
 ## Development
 
@@ -46,7 +26,7 @@ A premium hotel booking and management website built with Next.js, Tailwind CSS,
 npm install
 ```
 
-3. Start development servers:
+3. Start development server:
 
 ```bash
 npm run dev
@@ -58,14 +38,31 @@ npm run dev
 http://localhost:3000
 ```
 
-5. Open backend API:
-
-```text
-http://localhost:5000/api/health
-```
-
 ## Notes
 
-- The booking endpoint includes availability logic to prevent overlapping reservations.
-- Admin-only routes require a bearer token with `role: admin`.
-- Payment route is scaffolded for Stripe/Razorpay integration.
+- The booking endpoint sends reservation requests via EmailJS.
+- This repository no longer includes a separate Express backend or database layer.
+
+## Cloudflare Pages deployment
+
+ To deploy on Cloudflare Pages (Edge runtime) the booking endpoint must be Edge-compatible and forward reservations through EmailJS. The booking API in `app/api/bookings/route.ts` now sends email notifications instead of writing to a database.
+ 
+ Set the following environment variables in your Cloudflare Pages project settings:
+ 
+- `EMAILJS_SERVICE_ID`
+- `EMAILJS_TEMPLATE_ID`
+- `EMAILJS_PUBLIC_KEY`
+
+Testing the booking endpoint locally:
+
+```bash
+export EMAILJS_SERVICE_ID="your_emailjs_service_id"
+export EMAILJS_TEMPLATE_ID="your_emailjs_template_id"
+export EMAILJS_PUBLIC_KEY="your_emailjs_public_key"
+npm run dev
+
+# Example POST (adjust payload)
+curl -X POST http://localhost:3000/api/bookings \
+  -H "Content-Type: application/json" \
+  -d '{"guestName":"Alice","guestEmail":"a@example.com","roomType":"deluxe","checkIn":"2026-07-01","checkOut":"2026-07-03","totalGuests":2}'
+```

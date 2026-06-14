@@ -1,11 +1,11 @@
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import RoomsSection from '@/components/RoomsSection';
-import AmenitiesSection from '@/components/AmenitiesSection';
-import DiningWellnessSection from '@/components/DiningWellnessSection';
-import VenuesSection from '@/components/VenuesSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import Footer from '@/components/Footer';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import RoomsSection from '../components/RoomsSection';
+import AmenitiesSection from '../components/AmenitiesSection';
+import DiningWellnessSection from '../components/DiningWellnessSection';
+import VenuesSection from '../components/VenuesSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import Footer from '../components/Footer';
 
 export default function HomePage() {
   return (
