@@ -1,7 +1,7 @@
 const amenities = [
-  { label: 'Complimentary ultra-high-speed fiber internet accessible seamlessly across the entire property', icon: '🌐' },
-  { label: 'Gourmet in-room dining curated by our executive chefs, delivered straight to your door at any hour', icon: '🛎️' },
-  { label: 'Indulge in a lavish daily breakfast spread featuring artisanal pastries, farm-fresh eggs, and signature house-made dishes, all included with your stay.', icon: '🥐' },
+  { label: 'Complimentary ultra-high-speed fiber internet', icon: '🌐' },
+  { label: 'Gourmet in-room dining curated by our executive chefs,right at your door', icon: '🍝' },
+  { label: 'Indulge in a lavish daily breakfast spread featuring artisanal pastries, farm-fresh eggs etc.', icon: '🍧' },
   { label: 'Complimentary, secure white-glove valet service tracking your vehicle with absolute care', icon: '🚗' },
   { label: 'Laundry Service', icon: '🧺' },
   { label: 'Spa & Wellness', icon: '💆‍♀️' }
@@ -28,7 +28,7 @@ export default function AmenitiesSection() {
                 {item.icon}
               </div>
               <p className="mt-4 sm:mt-6 text-lg sm:text-xl font-semibold text-white">{item.label}</p>
-              <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-6 sm:leading-7 text-white/65">Stay connected with our complimentary high-speed wireless internet, available throughout the hotel for seamless browsing and productivity. Indulge in culinary delights at any hour with our extensive 24/7 room service menu, delivered fresh to your door. Start your day right with a delicious complimentary breakfast, featuring a wide selection of fresh and healthy options. Enjoy the convenience of our professional valet parking service, ensuring a hassle-free arrival and departure experience. Keep your wardrobe fresh and crisp with our efficient laundry service, available for all your garment care needs. Rejuvenate your mind and body at our luxurious spa and wellness center, offering a range of treatments and fitness facilities.</p>
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-6 sm:leading-7 text-white/65"> Everything is included in your stay! </p>
             </div>
           ))}
         </div>
