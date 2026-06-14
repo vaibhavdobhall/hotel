@@ -1,11 +1,5 @@
 import { MongoClient, MongoClientOptions, Db } from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
-}
-
 interface CachedClient {
   client: MongoClient | null;
   db: Db | null;
@@ -13,7 +7,7 @@ interface CachedClient {
 
 declare global {
   // eslint-disable-next-line no-var
-  var mongo: CachedClient;
+  var mongo: CachedClient | undefined;
 }
 
 let cached: CachedClient = global.mongo || { client: null, db: null };
@@ -23,6 +17,11 @@ if (!global.mongo) {
 }
 
 export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db }> {
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  }
+
   if (cached.client && cached.db) {
     return { client: cached.client, db: cached.db };
   }
@@ -32,7 +31,7 @@ export async function connectToDatabase(): Promise<{ client: MongoClient; db: Db
     minPoolSize: 1,
   };
 
-  const client = new MongoClient(MONGODB_URI!, opts);
+  const client = new MongoClient(uri, opts);
   await client.connect();
 
   const db = client.db('hotel');
