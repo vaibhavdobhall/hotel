@@ -70,11 +70,12 @@ export async function POST(req: NextRequest) {
       }),
     });
 
+    const emailText = await emailResponse.text();
     let emailResult: unknown;
     try {
-      emailResult = await emailResponse.json();
+      emailResult = JSON.parse(emailText);
     } catch (parseError) {
-      emailResult = { message: 'EmailJS returned an invalid response.' };
+      emailResult = emailText;
     }
 
     const formatEmailError = (result: unknown) => {
