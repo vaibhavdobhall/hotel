@@ -36,12 +36,13 @@ export default function RoomsSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 sm:mb-12 max-w-2xl">
           <p className="text-xs sm:text-sm uppercase tracking-[0.36em] text-gold">Rooms & Suites</p>
-          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-white font-serif">
+          <h2 className="mt-3 sm:mt-4 text-2xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-black font-serif">
             Curated stays for every traveler.
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg leading-7 sm:leading-8 text-white/75">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg leading-7 sm:leading-8 text-black/75">
             Select from premium suites, deluxe rooms, and intimate comfort accommodations — each thoughtfully designed to deliver a serene, polished experience.
           </p>
+          
         </div>
 
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
