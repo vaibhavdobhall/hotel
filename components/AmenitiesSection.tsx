@@ -28,7 +28,7 @@ export default function AmenitiesSection() {
                 {item.icon}
               </div>
               <p className="mt-4 sm:mt-6 text-lg sm:text-xl font-semibold text-white">{item.label}</p>
-              <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-6 sm:leading-7 text-white/65">High-quality experiences designed for convenience, comfort, and luxury throughout your stay.</p>
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-6 sm:leading-7 text-white/65">Stay connected with our complimentary high-speed wireless internet, available throughout the hotel for seamless browsing and productivity. Indulge in culinary delights at any hour with our extensive 24/7 room service menu, delivered fresh to your door. Start your day right with a delicious complimentary breakfast, featuring a wide selection of fresh and healthy options. Enjoy the convenience of our professional valet parking service, ensuring a hassle-free arrival and departure experience. Keep your wardrobe fresh and crisp with our efficient laundry service, available for all your garment care needs. Rejuvenate your mind and body at our luxurious spa and wellness center, offering a range of treatments and fitness facilities.</p>
             </div>
           ))}
         </div>

@@ -31,7 +31,7 @@ export default function ContactPage() {
                   </label>
                   <label className="space-y-3 text-sm text-[#5c5245]">
                     <span className="block uppercase tracking-[0.24em] text-[#b48a57]">Phone</span>
-                    <input className="w-full rounded-2xl border border-[#d9c6b0] bg-[#f7ede2] px-4 py-3 text-[#1f1a12] outline-none transition focus:border-[#b48a57]" type="tel" placeholder="(555) 123-4567" />
+                    <input className="w-full rounded-2xl border border-[#d9c6b0] bg-[#f7ede2] px-4 py-3 text-[#1f1a12] outline-none transition focus:border-[#b48a57]" type="tel" placeholder="+91 98765 43210" />
                   </label>
                   <label className="space-y-3 text-sm text-[#5c5245]">
                     <span className="block uppercase tracking-[0.24em] text-[#b48a57]">Request</span>
@@ -63,11 +63,11 @@ export default function ContactPage() {
                   </div>
                   <div className="rounded-3xl bg-white/5 p-5">
                     <p className="font-semibold text-white">Phone</p>
-                    <p className="mt-2">(555) 862-2100</p>
+                    <p className="mt-2">+91 98765 43210</p>
                   </div>
                   <div className="rounded-3xl bg-white/5 p-5">
                     <p className="font-semibold text-white">Visit us</p>
-                    <p className="mt-2">123 Contempo Avenue, City Center</p>
+                    <p className="mt-2">Plot No. 1, Sector 18, Noida, Uttar Pradesh 201301</p>
                   </div>
                 </div>
               </aside>
