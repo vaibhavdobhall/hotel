@@ -1,8 +1,8 @@
 const amenities = [
-  { label: 'Free Wi-Fi', icon: '🌐' },
-  { label: '24/7 Room Service', icon: '🛎️' },
-  { label: 'Complimentary Breakfast', icon: '🥐' },
-  { label: 'Valet Parking', icon: '🚗' },
+  { label: 'Complimentary ultra-high-speed fiber internet accessible seamlessly across the entire property', icon: '🌐' },
+  { label: 'Gourmet in-room dining curated by our executive chefs, delivered straight to your door at any hour', icon: '🛎️' },
+  { label: 'Indulge in a lavish daily breakfast spread featuring artisanal pastries, farm-fresh eggs, and signature house-made dishes, all included with your stay.', icon: '🥐' },
+  { label: 'Complimentary, secure white-glove valet service tracking your vehicle with absolute care', icon: '🚗' },
   { label: 'Laundry Service', icon: '🧺' },
   { label: 'Spa & Wellness', icon: '💆‍♀️' }
 ];

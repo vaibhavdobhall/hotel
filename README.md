@@ -66,3 +66,4 @@ curl -X POST http://localhost:3000/api/bookings \
   -H "Content-Type: application/json" \
   -d '{"guestName":"Alice","guestEmail":"a@example.com","roomType":"deluxe","checkIn":"2026-07-01","checkOut":"2026-07-03","totalGuests":2}'
 ```
+export NVIDIA_NIM_API_KEY=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

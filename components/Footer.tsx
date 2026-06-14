@@ -13,7 +13,7 @@ export default function Footer() {
             <p className="text-xs sm:text-sm uppercase tracking-[0.36em] text-gold">Contempo Hotel</p>
             <h3 className="mt-3 sm:mt-4 text-2xl sm:text-3xl font-semibold text-white font-serif">Refined stays, elevated service.</h3>
             <p className="mt-3 sm:mt-4 max-w-md text-xs sm:text-sm leading-6 sm:leading-7 text-white/70">
-              Plot No. 1, Sector 18, Noida, Uttar Pradesh 201301 | Phone: +91 98765 43210 | Email: hello@contempohotel.com
+              Plot No. A-40, Sector 62, Noida, Delhi NCR, India | Phone: +91 98710 12345 | Email: reservations@contempo.in
             </p>
           </div>
 
