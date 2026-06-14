@@ -77,20 +77,27 @@ export async function POST(req: NextRequest) {
       emailResult = { message: 'EmailJS returned an invalid response.' };
     }
 
+    const formatEmailError = (result: unknown) => {
+      if (!result) return `${emailResponse.statusText || 'Unknown error'} (${emailResponse.status})`;
+      if (typeof result === 'string') return result;
+      if (typeof result === 'object') {
+        if ('message' in result && typeof (result as any).message === 'string') return (result as any).message;
+        if ('error' in result && typeof (result as any).error === 'string') return (result as any).error;
+      }
+      return JSON.stringify(result);
+    };
+
     if (!emailResponse.ok) {
+      const detailText = formatEmailError(emailResult);
       console.error('EmailJS API error:', {
         status: emailResponse.status,
         statusText: emailResponse.statusText,
+        message: detailText,
         response: emailResult,
       });
       return NextResponse.json(
         {
-          error: 'Failed to send booking request.',
-          details: {
-            status: emailResponse.status,
-            statusText: emailResponse.statusText,
-            response: emailResult,
-          },
+          error: `Failed to send booking request: ${detailText}`,
         },
         { status: emailResponse.status || 502 }
       );
