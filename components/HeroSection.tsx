@@ -67,9 +67,15 @@ export default function HeroSection() {
           totalGuests: 2,
         });
       } else {
+        const detailMessage =
+          data.details?.message ||
+          data.details?.error ||
+          (typeof data.details === 'string' ? data.details : null);
+
         setSubmitStatus({
           type: 'error',
-          message: data.error || 'Failed to send booking request. Please try again.',
+          message:
+            data.error || detailMessage || 'Failed to send booking request. Please try again.',
         });
       }
     } catch (error) {

@@ -27,15 +27,21 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid email format' }, { status: 400 });
     }
 
-    const serviceId = process.env.EMAILJS_SERVICE_ID || (req as any).env?.EMAILJS_SERVICE_ID;
-    const templateId = process.env.EMAILJS_TEMPLATE_ID || (req as any).env?.EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.EMAILJS_PUBLIC_KEY || (req as any).env?.EMAILJS_PUBLIC_KEY;
+    const serviceId = process.env.EMAILJS_SERVICE_ID;
+    const templateId = process.env.EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS configuration is missing.', {
+        serviceId: Boolean(serviceId),
+        templateId: Boolean(templateId),
+        publicKey: Boolean(publicKey),
+      });
+
       return NextResponse.json(
         {
           error:
-            'Booking service is not configured. Please contact support or try again later.',
+            'EmailJS credentials are not configured. Please add EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, and EMAILJS_PUBLIC_KEY.',
         },
         { status: 500 }
       );
@@ -61,12 +67,20 @@ export async function POST(req: NextRequest) {
       }),
     });
 
-    const emailResult = await emailResponse.json();
+    let emailResult: unknown;
+    try {
+      emailResult = await emailResponse.json();
+    } catch (parseError) {
+      emailResult = { message: 'EmailJS returned an invalid response.' };
+    }
 
     if (!emailResponse.ok) {
       console.error('EmailJS API error:', emailResult);
       return NextResponse.json(
-        { error: 'Failed to send booking request', details: emailResult },
+        {
+          error: 'Failed to send booking request.',
+          details: emailResult,
+        },
         { status: emailResponse.status || 502 }
       );
     }
