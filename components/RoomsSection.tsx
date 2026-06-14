@@ -4,7 +4,7 @@ const rooms = [
   {
     title: 'Premium Suite',
     subtitle: 'Spacious suite with city views',
-    price: '$420/night',
+    price: '₹15000/night',
     occupancy: '2 Guests',
     description: 'Elegant suite with plush seating, marble bath, and panoramic windows.',
     amenities: ['King Bed', 'Wi-Fi', 'Breakfast', 'Mini Bar'],
@@ -13,7 +13,7 @@ const rooms = [
   {
     title: 'Deluxe Room',
     subtitle: 'Modern comfort in a serene setting',
-    price: '$280/night',
+    price: '₹10000/night',
     occupancy: '2 Guests',
     description: 'Contemporary room with refined finishes, workspace, and premium amenities.',
     amenities: ['Queen Bed', 'Wi-Fi', 'In-Room Dining', 'Smart TV'],
@@ -22,7 +22,7 @@ const rooms = [
   {
     title: 'Comfort Room',
     subtitle: 'Warm and intimate accommodations',
-    price: '$190/night',
+    price: '₹5000/night',
     occupancy: '2 Guests',
     description: 'Inviting room with soft textures, elegant lighting, and a calm palette.',
     amenities: ['King Bed', 'Wi-Fi', 'Rain Shower', 'Room Service'],
